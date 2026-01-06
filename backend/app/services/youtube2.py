@@ -191,3 +191,15 @@ def fetch_english_transcript(video_id: str) -> List[Dict[str, any]]:
         # 예상치 못한 오류
         logger.error(f"Unexpected error fetching transcript for {video_id}: {e}", exc_info=True)
         raise TranscriptError(f"Unexpected error: {str(e)}")
+    
+    
+def build_youtube_play_url(video_id: str, start: float) -> str:
+    """
+    유튜브 영상 재생 URL 생성
+
+    예:
+    https://www.youtube.com/watch?v=VIDEO_ID&t=123s
+    """
+
+    start_seconds = int(start)
+    return f"https://www.youtube.com/watch?v={video_id}&t={start_seconds}s"

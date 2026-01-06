@@ -23,9 +23,19 @@ class TranscriptItem(BaseModel):
     start: float
 
 
+class SentenceItem(BaseModel):
+    sentence_id: str
+    start: float
+    original: str
+    translation: str | None
+    play_url: str
+
+
 class YouTubeStudyResponse(BaseModel):
     """
     유튜브 학습 응답 스키마
     """
     video_id: str
-    transcript: List[TranscriptItem]
+    sentences: List[SentenceItem]  # ← transcript → sentences로 변경
+
+
